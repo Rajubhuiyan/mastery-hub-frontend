@@ -20,4 +20,8 @@ To access Mastery Hub, simply visit the live link: [https://mastery-hub.web.app/
  
 ## Contributing
 
-developed by [https://web.facebook.com/mohammadrajuahmedbhuiyan/](Raju Ahmed Bhuiyan)
+developed by Raju Ahmed Bhuiyan - feel free to contact me!
+......
+
+[https://web.facebook.com/mohammadrajuahmedbhuiyan/](Facebook)
+
