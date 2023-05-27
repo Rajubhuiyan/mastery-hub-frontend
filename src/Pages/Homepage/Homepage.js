@@ -3,10 +3,11 @@ import Header from './Components/Header';
 import { Box } from '@mui/material';
 import Navbar from './Components/Navbar';
 import HeaderBg from '../../Utilities/Images/Homepage/header-background.png';
+import TopCategory from './Components/TopCategory';
 
 const Homepage = () => {
     return (
-        <Box sx={{ maxWidth: '100vw', }}>
+        <Box sx={{ maxWidth: '100vw',mb:5 }}>
             <Box sx={{
                 backgroundImage: `url(${HeaderBg})`,
                 backgroundRepeat: 'no-repeat',
@@ -15,11 +16,12 @@ const Homepage = () => {
                 width: '100%',
                 backgroundColor: 'white',
                 backgroundPosition: 'center',
-                mb:{xs:'100px',md:'50px'}
+                mb: { xs: '100px', md: '50px' }
             }}>
                 <Navbar />
                 <Header />
-            </Box>
+            </Box> 
+            <TopCategory />
         </Box>
     );
 };

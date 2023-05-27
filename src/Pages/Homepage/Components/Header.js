@@ -69,7 +69,7 @@ const headerCardData = [
 
 const Header = () => {
     return (
-        <Container fullWidth="md" >
+        <Container >
             <Box sx={{
                 py: { xs: 12, md: 9 },
                 position: 'relative',
