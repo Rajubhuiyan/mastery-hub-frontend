@@ -21,7 +21,5 @@ To access Mastery Hub, simply visit the live link: [https://mastery-hub.web.app/
 ## Contributing
 
 developed by Raju Ahmed Bhuiyan - feel free to contact me!
-......
-
-[https://web.facebook.com/mohammadrajuahmedbhuiyan/](Facebook)
-
+ 
+Contact with me: [Facebook](https://web.facebook.com/mohammadrajuahmedbhuiyan/)
