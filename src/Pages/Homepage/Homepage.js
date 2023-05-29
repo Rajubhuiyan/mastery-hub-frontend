@@ -16,7 +16,7 @@ const Homepage = () => {
                 width: '100%',
                 backgroundColor: 'white',
                 backgroundPosition: 'center',
-                mb: { xs: '100px', md: '50px' }
+                mb: { xs: '80px', md: '50px' }
             }}>
                 <Navbar />
                 <Header />

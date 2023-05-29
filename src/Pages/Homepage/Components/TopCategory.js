@@ -3,7 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import TopCategoryCard from './TopCategoryCard';
-import { Pagination } from 'swiper';
+import { Pagination, Autoplay } from 'swiper';
 
 
 const TopCategoryData = [
@@ -70,7 +70,7 @@ const TopCategoryData = [
 const TopCategory = () => {
     return (
         <Container sx={{
-            mt: 12
+            mt: { xs: 8, sm: 12 }
         }}  >
             <Box sx={{
                 display: 'flex',
@@ -113,7 +113,8 @@ const TopCategory = () => {
                 },
                 '& .swiper-pagination-bullet': {
                     height: '10px',
-                    width: '10px'
+                    width: '10px',
+                    transitionDuration: '0.4s'
                 },
 
             }}>
@@ -123,7 +124,7 @@ const TopCategory = () => {
                     // onSlideChange={() => console.log('slide change')}
                     // onSwiper={(swiper) => console.log(swiper)}
                     style={{
-                        paddingBottom:'60px'
+                        paddingBottom: '60px'
                     }}
                     breakpoints={{
                         600: {
@@ -139,7 +140,11 @@ const TopCategory = () => {
                             spaceBetween: 10,
                         },
                     }}
-                    modules={[Pagination,]}
+                    modules={[Pagination, Autoplay]}
+                    autoplay={{
+                        delay: 2500,
+                        disableOnInteraction: false,
+                    }}
                     pagination={{
                         clickable: true,
                     }}

@@ -71,7 +71,8 @@ const Header = () => {
     return (
         <Container >
             <Box sx={{
-                py: { xs: 12, md: 9 },
+                pt: { xs: 6, md: 9 },
+                pb: { xs: 1.5, sm: 11, md: 11 },
                 position: 'relative',
             }}>
                 <Box>
@@ -181,6 +182,7 @@ const Header = () => {
                                 height: { xs: 250, md: 450 },
                                 display: 'flex',
                                 justifyContent: 'center',
+                                mt: { xs: 3, sm: 0 }
                             }}>
                                 <img style={{
                                     width: 'auto',
@@ -193,11 +195,12 @@ const Header = () => {
 
 
                 <Box sx={{
-                    position: 'absolute',
+                    position: { sm: 'absolute' },
                     width: '100%',
                     bottom: { xs: '-60px', sm: '-22px', md: '-33px' },
                     display: 'flex',
-                    justifyContent: 'center'
+                    justifyContent: 'center',
+                    mt: { xs: 5, sm: 0 }
                 }}>
                     <Box sx={{
                         display: 'flex',
@@ -243,7 +246,7 @@ const Header = () => {
                     </Box>
                 </Box>
 
-            </Box> 
+            </Box>
         </Container>
 
     );
