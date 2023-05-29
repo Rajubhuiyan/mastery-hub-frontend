@@ -4,10 +4,11 @@ import { Box } from '@mui/material';
 import Navbar from './Components/Navbar';
 import HeaderBg from '../../Utilities/Images/Homepage/header-background.png';
 import TopCategory from './Components/TopCategory';
+import FeaturedCourses from './Components/FeaturedCourses';
 
 const Homepage = () => {
     return (
-        <Box sx={{ maxWidth: '100vw',mb:5 }}>
+        <Box sx={{ maxWidth: '100vw', mb: 5 }}>
             <Box sx={{
                 backgroundImage: `url(${HeaderBg})`,
                 backgroundRepeat: 'no-repeat',
@@ -20,8 +21,9 @@ const Homepage = () => {
             }}>
                 <Navbar />
                 <Header />
-            </Box> 
+            </Box>
             <TopCategory />
+            <FeaturedCourses />
         </Box>
     );
 };

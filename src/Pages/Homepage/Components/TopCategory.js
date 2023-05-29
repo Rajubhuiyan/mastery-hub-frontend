@@ -88,10 +88,14 @@ const TopCategory = () => {
                     </Typography>
                 </Box>
                 <Button sx={{
-                    borderColor: '#392C7D',
+                    borderColor: '#B4A7F5',
                     color: '#392C7D',
                     borderRadius: '5rem',
-                    fontSize: { xs: '0.8rem', md: '1rem' },
+                    fontSize: { xs: '0.7rem', md: '0.8rem' },
+                    '&:hover': {
+                        backgroundColor: '#392C7D',
+                        color: 'white'
+                    }
                 }} variant="outlined">
                     All Categories
                 </Button>

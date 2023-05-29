@@ -17,7 +17,8 @@ const TopCategoryCard = ({ category }) => {
             flexDirection: 'column',
             alignItems: 'center',
             gap: 2,
-            cursor: 'pointer'
+            cursor: 'pointer',
+            
         }}>
             <CardMedia sx={{
                 height: '100px',
