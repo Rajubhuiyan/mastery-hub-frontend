@@ -102,6 +102,38 @@ const coursesData = [
             "name": "John Smith"
         }
     },
+    {
+        "id": "course7",
+        "image": "https://i.ibb.co/y5RvKRc/div-product-img-1.png",
+        "price": {
+            "amount": 29.99,
+            "currency": "USD"
+        },
+        "name": "Web Development 101",
+        "total_lessons": 20,
+        "rating": 4.5,
+        "course_hours": 12,
+        "instructor": {
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80",
+            "name": "John Smith"
+        }
+    },
+    {
+        "id": "course8",
+        "image": "https://i.ibb.co/y5RvKRc/div-product-img-1.png",
+        "price": {
+            "amount": 29.99,
+            "currency": "USD"
+        },
+        "name": "Web Development 101",
+        "total_lessons": 20,
+        "rating": 4.5,
+        "course_hours": 12,
+        "instructor": {
+            "image": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=464&q=80",
+            "name": "John Smith"
+        }
+    },
 ]
 
 
@@ -173,7 +205,7 @@ const FeaturedCourses = () => {
 
 
                     <Box sx={{ mt: 4 }}>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={1.3}>
                             {
                                 coursesData.map((course) => (
                                     <CourseCard key={course.id} course={course} />

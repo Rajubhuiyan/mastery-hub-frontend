@@ -218,6 +218,7 @@ const Header = () => {
                                             alignItems: 'center',
                                             gap: 1,
                                             boxShadow: 'none',
+                                            border: '1px solid #E9ECEF',
                                         }}>
                                             <Avatar
                                                 src={data.img}
