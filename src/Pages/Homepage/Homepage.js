@@ -9,6 +9,8 @@ import MasterSkill from './Components/MasterSkill';
 import trendingCourseBg from '../../Utilities/Images/Homepage/trending-course-bg.png';
 import TrendingCourse from './Components/TrendingCourse';
 import FeaturedInstructors from './Components/FeaturedInstructors';
+import TrustedBy from './Components/TrustedBy';
+import JoinUs from './Components/JoinUs';
 
 const Homepage = () => {
     return (
@@ -39,8 +41,12 @@ const Homepage = () => {
                 backgroundPosition: 'center',
             }}>
                 <TrendingCourse />
-                <FeaturedInstructors/>
+                <FeaturedInstructors />
             </Box>
+
+            <TrustedBy />
+            <JoinUs/>
+
         </Box>
     );
 };

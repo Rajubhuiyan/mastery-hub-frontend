@@ -51,7 +51,7 @@ const MasterSkill = () => {
                             gravida maecenas augue elementum et neque. Suspendisse imperdiet.
                         </Typography>
                         <Box sx={{ mt: {xs:1.5,md:2,lg:3,},pb:{md:6} }}>
-                            <Grid container spacing={{ xs: 1.5, md: 2 }} >
+                            <Grid container sx={{pb:{xs:2,md:0}}} spacing={{ xs: 1.5, md: 2 }} >
                                 {
                                     MasterSkillData.map((item) => (
                                         <Grid item xs={12} sm={6} md={6} key={item.id}>
