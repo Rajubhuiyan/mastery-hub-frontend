@@ -163,7 +163,11 @@ const Navbar = () => {
                                     borderRadius: '3rem',
                                     textTransform: 'none',
                                     width: 90,
-                                    borderColor: '#4C2BEF'
+                                    borderColor: '#4C2BEF',
+                                    '&:hover': {
+                                        backgroundColor: '#392C7D',
+                                        color: 'white'
+                                    }
                                 }}>
                                     Register
                                 </Button>
@@ -219,7 +223,11 @@ const Navbar = () => {
                                 borderRadius: '3rem',
                                 textTransform: 'none',
                                 width: 90,
-                                borderColor: '#4C2BEF'
+                                borderColor: '#4C2BEF',
+                                '&:hover': {
+                                    backgroundColor: '#392C7D',
+                                    color: 'white'
+                                }
                             }}>
                                 Register
                             </Button>

@@ -11,6 +11,7 @@ import TrendingCourse from './Components/TrendingCourse';
 import FeaturedInstructors from './Components/FeaturedInstructors';
 import TrustedBy from './Components/TrustedBy';
 import JoinUs from './Components/JoinUs';
+import Footer from './Components/Footer';
 
 const Homepage = () => {
     return (
@@ -46,6 +47,7 @@ const Homepage = () => {
 
             <TrustedBy />
             <JoinUs/>
+            <Footer/>
 
         </Box>
     );
