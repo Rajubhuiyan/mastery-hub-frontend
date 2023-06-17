@@ -1,5 +1,5 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
-import calendarIcon from '../../../Utilities/Images/Homepage/calendar-icon.svg';
+import calendarIcon from '../../../Assets/Images/Homepage/calendar-icon.svg';
 import React, { memo } from 'react';
 
 const LatestBlogCard = ({ blog }) => {

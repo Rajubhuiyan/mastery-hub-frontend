@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
-import reviewBg from '../../../Utilities/Images/Homepage/review-bg.jpg';
+import reviewBg from '../../../Assets/Images/Homepage/review-bg.jpg';
 import { Box, Button, styled } from '@mui/material';
-import quoteImg from '../../../Utilities/Images/Homepage/quote.svg';
+import quoteImg from '../../../Assets/Images/Homepage/quote.svg';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation,  } from "swiper";
 import ReviewCard from './ReviewCard';

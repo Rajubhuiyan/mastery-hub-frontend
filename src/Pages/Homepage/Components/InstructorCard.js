@@ -1,5 +1,5 @@
 import { Box, Card, CardMedia, Typography } from '@mui/material';
-import booKIcon from '../../../Utilities/Images/Homepage/instructor-book-icon.svg';
+import booKIcon from '../../../Assets/Images/Homepage/instructor-book-icon.svg';
 import React, { memo } from 'react';
 
 const InstructorCard = ({ instructor }) => {

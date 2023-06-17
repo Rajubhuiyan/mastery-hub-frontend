@@ -153,9 +153,11 @@ const Navbar = () => {
                                     '&:hover': {
                                         backgroundColor: 'white',
                                         opacity: 0.9
-                                    }
-
-                                }}>
+                                    } 
+                                }}
+                                component={Link}
+                                to="/login"
+                                >
                                     Login
                                 </Button>
                                 <Button variant='outlined' sx={{
@@ -168,7 +170,10 @@ const Navbar = () => {
                                         backgroundColor: '#392C7D',
                                         color: 'white'
                                     }
-                                }}>
+                                }}
+                                component={Link}
+                                to="/register"
+                                >
                                     Register
                                 </Button>
                             </Box>
@@ -215,7 +220,10 @@ const Navbar = () => {
                                     opacity: 0.9
                                 }
 
-                            }}>
+                            }}
+                            component={Link}
+                            to="/login"
+                            >
                                 Login
                             </Button>
                             <Button variant='outlined' sx={{
@@ -228,7 +236,10 @@ const Navbar = () => {
                                     backgroundColor: '#392C7D',
                                     color: 'white'
                                 }
-                            }}>
+                            }}
+                            component={Link}
+                            to="/register"
+                            >
                                 Register
                             </Button>
                         </Box>

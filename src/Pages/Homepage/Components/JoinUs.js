@@ -1,6 +1,6 @@
 import { Box, Button, CardMedia, Container, Grid, Typography } from '@mui/material';
-import joinUsImg from '../../../Utilities/Images/Homepage/join-us-left-img.png';
-import joinUsBg from '../../../Utilities/Images/Homepage/jounus-bg.png';
+import joinUsImg from '../../../Assets/Images/Homepage/join-us-left-img.png';
+import joinUsBg from '../../../Assets/Images/Homepage/jounus-bg.png';
 import React from 'react';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 

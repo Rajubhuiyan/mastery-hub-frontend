@@ -1,9 +1,9 @@
 import { Box, Button, Container, Grid, InputAdornment, Stack, TextField, Typography, styled } from '@mui/material';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LocationIcon from '../../../Utilities/Images/Homepage/location-icon.svg'
-import messageIcon from '../../../Utilities/Images/Homepage/message-icon.svg'
-import callIcon from '../../../Utilities/Images/Homepage/call-icon.svg'
+import LocationIcon from '../../../Assets/Images/Homepage/location-icon.svg'
+import messageIcon from '../../../Assets/Images/Homepage/message-icon.svg'
+import callIcon from '../../../Assets/Images/Homepage/call-icon.svg'
 
 
 const EmailAddressInput = styled(TextField)({

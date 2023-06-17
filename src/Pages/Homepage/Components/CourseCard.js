@@ -1,8 +1,8 @@
 import { FavoriteBorder } from '@mui/icons-material';
 import { Avatar, Box, Button, Card, CardMedia, Divider, Grid, IconButton, ListItem, ListItemAvatar, ListItemText, Rating, Stack, Typography } from '@mui/material';
 import React, { memo } from 'react';
-import bookIcon from '../../../Utilities/Images/Homepage/course-book-icon.svg';
-import clockIcon from '../../../Utilities/Images/Homepage/course-clock-icon.svg';
+import bookIcon from '../../../Assets/Images/Homepage/course-book-icon.svg';
+import clockIcon from '../../../Assets/Images/Homepage/course-clock-icon.svg';
 function convertHourToMinutesOrHours(hour) {
     if (hour >= 1) {
         return Math.floor(hour) + " hours";

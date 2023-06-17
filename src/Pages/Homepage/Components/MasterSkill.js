@@ -1,10 +1,10 @@
 import { Box, Card, CardMedia, Container, Grid, Typography } from '@mui/material';
 import React from 'react';
-import rightImg from '../../../Utilities/Images/Homepage/master-kill-right-img.png';
-import masterCertified from '../../../Utilities/Images/Homepage/master-certified.svg';
-import masterCloud from '../../../Utilities/Images/Homepage/master-cloud.svg';
-import masterCourses from '../../../Utilities/Images/Homepage/master-courses.svg';
-import masterIns from '../../../Utilities/Images/Homepage/master-ins.svg';
+import rightImg from '../../../Assets/Images/Homepage/master-kill-right-img.png';
+import masterCertified from '../../../Assets/Images/Homepage/master-certified.svg';
+import masterCloud from '../../../Assets/Images/Homepage/master-cloud.svg';
+import masterCourses from '../../../Assets/Images/Homepage/master-courses.svg';
+import masterIns from '../../../Assets/Images/Homepage/master-ins.svg';
 
 
 

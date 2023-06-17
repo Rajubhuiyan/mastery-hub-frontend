@@ -2,7 +2,7 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
-import headerRightImg from '../../../Utilities/Images/Homepage/header-right-image.png';
+import headerRightImg from '../../../Assets/Images/Homepage/header-right-image.png';
 import { Avatar, Card, IconButton, InputAdornment, Rating, TextField, Typography, styled } from '@mui/material';
 import { ArrowForward, Search } from '@mui/icons-material';
 
