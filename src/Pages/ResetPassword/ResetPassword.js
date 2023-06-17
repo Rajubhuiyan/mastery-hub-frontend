@@ -1,8 +1,7 @@
-import { Box, Button, Checkbox, Container, FormControlLabel, Grid, Stack, TextField, Typography, styled } from '@mui/material';
+import { Box, Button,  Container,  Grid,  TextField, Typography, styled } from '@mui/material';
 import React from 'react';
-import rightImage from '../../Assets/Images/Login/right-image.svg';
-import googleIcon from '../../Assets/Images/Login/google-icon.svg';
-import { Link } from 'react-router-dom';
+import graduateCapIcon from '../../Assets/Images/graduate-cap-icon.svg';
+import { Link, useParams } from 'react-router-dom';
 
 const Input = styled(TextField)({
     '&': {
@@ -37,53 +36,57 @@ const Input = styled(TextField)({
     },
 });
 
-const Login = () => {
+const ResetPassword = () => {
+
+
+    const { token } = useParams()
+
+
     return (
         <Container>
-            <Box sx={{ 
-                minHeight:'100vh',
-                display:'flex',
-                alignItems:'center',
-                justifyContent:'center', 
-                py:5
+            <Box sx={{
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                py: 5
             }}>
                 <Grid container spacing={5}>
-                    <Grid item xs={12} md={6}>
-                        <Box sx={{
-                            height: '100%',
-                            display: { xs: 'none', md: 'block' }
-                        }}>
-                            <img prio style={{ height: '100%', width: '100%' }} src={rightImage} alt="" />
-                        </Box>
-                    </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={12}>
                         <Box sx={{
                             display: 'flex',
                             justifyContent: 'center'
                         }}>
+
+
+
+
                             <Box sx={{
                                 height: '100%',
                                 width: '100%',
-                                maxWidth: {xs:400,md:500},
+                                maxWidth: { xs: 400, md: 500 },
                                 px: { md: 5 }
                             }}>
+
+                                <Box sx={{
+                                    textAlign: 'center',
+                                    mb: { xs: 7, sm: 9, lg: 10 }
+                                }}>
+                                    <Link to="/">
+                                        <img src={graduateCapIcon} alt="" />
+                                    </Link>
+                                    <Typography sx={{ fontSize: '1.8rem', fontWeight: 600, color: '#F66962' }}>
+                                        MasteryHub
+                                    </Typography>
+                                </Box>
+
                                 <Typography gutterBottom sx={{ color: '#1A1439', fontSize: { xs: '1.8rem', md: '2.5rem' }, fontWeight: 600, textAlign: 'center' }}>
-                                    Welcome Back 👋
+                                    Change Password
                                 </Typography>
                                 <Typography sx={{ color: 'rgba(26, 20, 57, 0.68)', fontSize: { xs: '0.8rem', md: '0.9rem' }, textAlign: 'center' }}>
-                                    Clarity gives you the blocks and components you need to create a truly professional website.
+                                    Please enter your password and keep it safe.
                                 </Typography>
-                                <Button sx={{
-                                    mt: 3, backgroundColor: '#F0F0F0', color: 'black', width: 1,
-                                    height: { xs: 40, md: 50 },
-                                    borderRadius: '10rem',
-                                    textTransform: 'none',
-                                    '&:hover': {
-                                        backgroundColor: '#F0F0F0',
-                                    }
-                                }}>
-                                    <img style={{ marginRight: '10px' }} src={googleIcon} alt="" /> Sign in with Google
-                                </Button>
+
 
 
                                 <Typography sx={{
@@ -92,7 +95,7 @@ const Login = () => {
                                     fontSize: '0.9rem',
                                     fontWeight: 500
                                 }}>
-                                    Email Address
+                                    Password*
                                 </Typography>
                                 <Input
                                     sx={{
@@ -106,11 +109,11 @@ const Login = () => {
                                 />
                                 <Typography sx={{
                                     color: '#635F78',
-                                    mt: 3,
+                                    mt: 2,
                                     fontSize: '0.9rem',
                                     fontWeight: 500
                                 }}>
-                                    Password
+                                    Confirm Password*
                                 </Typography>
                                 <Input
                                     sx={{
@@ -118,32 +121,14 @@ const Login = () => {
                                         '& .MuiOutlinedInput-input': {
                                             p: { xs: '11.5px 14px', md: '16.5px 14px' }
                                         }
-                                    }} 
-
-                                    placeholder='Enter your password'
-                                    type='password'
+                                    }}
+                                    placeholder='Enter your email address'
                                     fullWidth
                                 />
 
-                                <Stack sx={{ mt: 2 }} direction="row" alignItems="center" justifyContent="space-between">
-                                    <FormControlLabel sx={{
 
-                                        '& .MuiFormControlLabel-label': {
-                                            fontSize: '0.9rem',
-                                            fontWeight: 500,
-                                            color: '#6e6e6e',
-                                        },
-                                        '& .MuiSvgIcon-root': {
-                                            fontSize: '1.1rem'
-                                        }
 
-                                    }} control={<Checkbox size='small' />} label="Remembered me" />
-                                    <Link style={{ textDecoration: 'none' }} to="/forget-password">
-                                        <Typography sx={{ color: '#F66962', fontSize: '0.9rem', fontWeight: 500 }}>
-                                            Forgot Password?
-                                        </Typography>
-                                    </Link>
-                                </Stack>
+
 
                                 <Button sx={{
                                     mt: 7, backgroundColor: '#F66962', color: 'white', width: 1,
@@ -154,24 +139,25 @@ const Login = () => {
                                         backgroundColor: '#F66962',
                                     }
                                 }}>
-                                    Login
+                                    Change Password
                                 </Button>
 
 
                                 <Typography sx={{
                                     fontSize: '0.9rem',
                                     mt: 3,
-                                    mb: 1
+                                    mb: 1,
+                                    textAlign: 'center',
                                 }}>
-                                    Don't have an account? {' '}
+                                    Take me to {' '}
                                     <Link style={{
                                         color: '#F66962',
                                         textDecoration: 'none',
                                         fontWeight: 500,
                                     }}
-                                    to="/register"
+                                        to="/login"
                                     >
-                                        Create free account
+                                        Login
                                     </Link>
                                 </Typography>
                             </Box>
@@ -183,4 +169,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default ResetPassword;

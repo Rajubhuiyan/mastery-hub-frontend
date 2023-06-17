@@ -1,4 +1,4 @@
-import { Box, Button, Card, Container, Grid, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import featuredCrBg from '../../../Assets/Images/Homepage/featured-courses-bg.png'
 import featuredPsuedo from '../../../Assets/Images/Homepage/featured-courses-psuedo.png'
 import React from 'react';

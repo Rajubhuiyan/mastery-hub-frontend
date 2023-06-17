@@ -37,7 +37,7 @@ const Input = styled(TextField)({
     },
 });
 
-const Login = () => {
+const Register = () => {
     return (
         <Container>
             <Box sx={{ 
@@ -53,7 +53,7 @@ const Login = () => {
                             height: '100%',
                             display: { xs: 'none', md: 'block' }
                         }}>
-                            <img prio style={{ height: '100%', width: '100%' }} src={rightImage} alt="" />
+                            <img style={{ height: '100%', width: '100%' }} src={rightImage} alt="" />
                         </Box>
                     </Grid>
                     <Grid item xs={12} md={6}>
@@ -68,14 +68,14 @@ const Login = () => {
                                 px: { md: 5 }
                             }}>
                                 <Typography gutterBottom sx={{ color: '#1A1439', fontSize: { xs: '1.8rem', md: '2.5rem' }, fontWeight: 600, textAlign: 'center' }}>
-                                    Welcome Back 👋
+                                    Join us today 👋
                                 </Typography>
                                 <Typography sx={{ color: 'rgba(26, 20, 57, 0.68)', fontSize: { xs: '0.8rem', md: '0.9rem' }, textAlign: 'center' }}>
                                     Clarity gives you the blocks and components you need to create a truly professional website.
                                 </Typography>
                                 <Button sx={{
                                     mt: 3, backgroundColor: '#F0F0F0', color: 'black', width: 1,
-                                    height: { xs: 40, md: 50 },
+                                    height: { xs: 40, md: 45 },
                                     borderRadius: '10rem',
                                     textTransform: 'none',
                                     '&:hover': {
@@ -88,25 +88,62 @@ const Login = () => {
 
                                 <Typography sx={{
                                     color: '#635F78',
-                                    mt: 5,
+                                    mt: 4,
                                     fontSize: '0.9rem',
                                     fontWeight: 500
                                 }}>
-                                    Email Address
+                                    First Name*
                                 </Typography>
                                 <Input
                                     sx={{
-                                        mt: 2,
+                                        mt: 1.5,
+                                        '& .MuiOutlinedInput-input': {
+                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                        }
+                                    }}
+                                    placeholder='Enter your first name'
+                                    fullWidth
+                                />
+                                <Typography sx={{
+                                    color: '#635F78',
+                                    mt: 2,
+                                    fontSize: '0.9rem',
+                                    fontWeight: 500
+                                }}>
+                                    Last Name*
+                                </Typography>
+                                <Input
+                                    sx={{
+                                        mt: 1.5,
+                                        '& .MuiOutlinedInput-input': {
+                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                        }
+                                    }}
+                                    placeholder='Enter your last name'
+                                    fullWidth
+                                />
+                                <Typography sx={{
+                                    color: '#635F78',
+                                    mt: 1.5,
+                                    fontSize: '0.9rem',
+                                    fontWeight: 500
+                                }}>
+                                    Email*
+                                </Typography>
+                                <Input
+                                    sx={{
+                                        mt: 1.5,
                                         '& .MuiOutlinedInput-input': {
                                             p: { xs: '11.5px 14px', md: '16.5px 14px' }
                                         }
                                     }}
                                     placeholder='Enter your email address'
                                     fullWidth
+                                    type='email'
                                 />
                                 <Typography sx={{
                                     color: '#635F78',
-                                    mt: 3,
+                                    mt: 1.5,
                                     fontSize: '0.9rem',
                                     fontWeight: 500
                                 }}>
@@ -114,7 +151,7 @@ const Login = () => {
                                 </Typography>
                                 <Input
                                     sx={{
-                                        mt: 2,
+                                        mt: 1.5,
                                         '& .MuiOutlinedInput-input': {
                                             p: { xs: '11.5px 14px', md: '16.5px 14px' }
                                         }
@@ -125,7 +162,7 @@ const Login = () => {
                                     fullWidth
                                 />
 
-                                <Stack sx={{ mt: 2 }} direction="row" alignItems="center" justifyContent="space-between">
+                                <Stack sx={{ mt: 1.5 }} direction="row" alignItems="center" justifyContent="space-between">
                                     <FormControlLabel sx={{
 
                                         '& .MuiFormControlLabel-label': {
@@ -146,15 +183,15 @@ const Login = () => {
                                 </Stack>
 
                                 <Button sx={{
-                                    mt: 7, backgroundColor: '#F66962', color: 'white', width: 1,
-                                    height: { xs: 40, md: 50 },
+                                    mt: 3.5, backgroundColor: '#F66962', color: 'white', width: 1,
+                                    height: { xs: 40, md: 45 },
                                     borderRadius: '10rem',
                                     textTransform: 'none',
                                     '&:hover': {
                                         backgroundColor: '#F66962',
                                     }
                                 }}>
-                                    Login
+                                    Create Account
                                 </Button>
 
 
@@ -163,15 +200,15 @@ const Login = () => {
                                     mt: 3,
                                     mb: 1
                                 }}>
-                                    Don't have an account? {' '}
+                                    Already have an account? {' '}
                                     <Link style={{
                                         color: '#F66962',
                                         textDecoration: 'none',
                                         fontWeight: 500,
                                     }}
-                                    to="/register"
+                                    to="/login"
                                     >
-                                        Create free account
+                                        Sign in
                                     </Link>
                                 </Typography>
                             </Box>
@@ -183,4 +220,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;
