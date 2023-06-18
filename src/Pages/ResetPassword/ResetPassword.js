@@ -6,6 +6,7 @@ import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import MasteryCustomInput from '../../SharedComponent/CustomComponents/MasteryCustomInput';
+import PublicNavbar from '../../SharedComponent/PublicNavbar/PublicNavbar';
 
 
 
@@ -37,152 +38,156 @@ const ResetPassword = () => {
 
 
     return (
-        <Container>
-            <Box sx={{
-                minHeight: '100vh',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                py: 5
-            }}
-                component="form"
-                onSubmit={handleSubmit(handleChangePassword)}
-            >
-                <Grid container spacing={5}>
-                    <Grid item xs={12} md={12}>
-                        <Box sx={{
-                            display: 'flex',
-                            justifyContent: 'center'
-                        }}>
-
-
-
-
+        <>
+         <PublicNavbar />
+            <Container>
+               
+                <Box sx={{
+                    minHeight: `calc(100vh - 64px)`,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    pb: 2
+                }}
+                    component="form"
+                    onSubmit={handleSubmit(handleChangePassword)}
+                >
+                    <Grid container spacing={5}>
+                        <Grid item xs={12} md={12}>
                             <Box sx={{
-                                height: '100%',
-                                width: '100%',
-                                maxWidth: { xs: 400, md: 500 },
-                                px: { md: 5 }
+                                display: 'flex',
+                                justifyContent: 'center'
                             }}>
 
+
+
+
                                 <Box sx={{
-                                    textAlign: 'center',
-                                    mb: { xs: 7, sm: 9, lg: 10 }
+                                    height: '100%',
+                                    width: '100%',
+                                    maxWidth: { xs: 400, md: 500 },
+                                    px: { md: 5 }
                                 }}>
-                                    <Link to="/">
-                                        <img src={graduateCapIcon} alt="" />
-                                    </Link>
-                                    <Typography sx={{ fontSize: '1.8rem', fontWeight: 600, color: '#F66962' }}>
-                                        MasteryHub
+
+                                    <Box sx={{
+                                        textAlign: 'center',
+                                        mb: { xs: 6, sm: 5, lg: 7 }
+                                    }}>
+                                        <Link to="/">
+                                            <img src={graduateCapIcon} alt="" />
+                                        </Link>
+                                        <Typography sx={{ fontSize: '1.8rem', fontWeight: 600, color: '#F66962' }}>
+                                            MasteryHub
+                                        </Typography>
+                                    </Box>
+
+                                    <Typography gutterBottom sx={{ color: '#1A1439', fontSize: { xs: '1.8rem', md: '2.5rem' }, fontWeight: 600, textAlign: 'center' }}>
+                                        Change Password
+                                    </Typography>
+                                    <Typography sx={{ color: 'rgba(26, 20, 57, 0.68)', fontSize: { xs: '0.8rem', md: '0.9rem' }, textAlign: 'center' }}>
+                                        Please enter your password and keep it safe.
+                                    </Typography>
+
+
+
+                                    <Typography sx={{
+                                        color: '#635F78',
+                                        mt: 5,
+                                        fontSize: '0.9rem',
+                                        fontWeight: 500
+                                    }}>
+                                        Password*
+                                    </Typography>
+                                    <Controller
+                                        name="password"
+                                        control={control}
+                                        render={({ field: { ref, ...field }, fieldState }) => (
+                                            <MasteryCustomInput
+                                                sx={{
+                                                    mt: 1.5,
+                                                    '& .MuiOutlinedInput-input': {
+                                                        p: { xs: '11.5px 14px', md: '15.5px 14px' }
+                                                    }
+                                                }}
+                                                placeholder='Enter new password'
+                                                fullWidth
+                                                error={!!errors.password}
+                                                helperText={errors?.password?.message}
+                                                {...field}
+                                                inputRef={ref}
+                                            />
+                                        )}
+                                    />
+
+                                    <Typography sx={{
+                                        color: '#635F78',
+                                        mt: 2,
+                                        fontSize: '0.9rem',
+                                        fontWeight: 500
+                                    }}>
+                                        Confirm Password*
+                                    </Typography>
+
+                                    <Controller
+                                        name="confirmPassword"
+                                        control={control}
+                                        render={({ field: { ref, ...field }, fieldState }) => (
+                                            <MasteryCustomInput
+                                                sx={{
+                                                    mt: 1.5,
+                                                    '& .MuiOutlinedInput-input': {
+                                                        p: { xs: '11.5px 14px', md: '15.5px 14px' }
+                                                    }
+                                                }}
+                                                placeholder='Enter confirm password'
+                                                fullWidth
+                                                error={!!errors.confirmPassword}
+                                                helperText={errors?.confirmPassword?.message}
+                                                {...field}
+                                                inputRef={ref}
+                                            />
+                                        )}
+                                    />
+
+                                    <Button sx={{
+                                        mt: 7, backgroundColor: '#F66962', color: 'white', width: 1,
+                                        height: { xs: 40, md: 45 },
+                                        borderRadius: '10rem',
+                                        textTransform: 'none',
+                                        '&:hover': {
+                                            backgroundColor: '#F66962',
+                                        }
+                                    }}
+                                        type='submit'
+                                    >
+                                        Change Password
+                                    </Button>
+
+
+                                    <Typography sx={{
+                                        fontSize: '0.9rem',
+                                        mt: 3,
+                                        mb: 1,
+                                        textAlign: 'center',
+                                    }}>
+                                        Take me to {' '}
+                                        <Link style={{
+                                            color: '#F66962',
+                                            textDecoration: 'none',
+                                            fontWeight: 500,
+                                        }}
+                                            to="/login"
+                                        >
+                                            Login
+                                        </Link>
                                     </Typography>
                                 </Box>
-
-                                <Typography gutterBottom sx={{ color: '#1A1439', fontSize: { xs: '1.8rem', md: '2.5rem' }, fontWeight: 600, textAlign: 'center' }}>
-                                    Change Password
-                                </Typography>
-                                <Typography sx={{ color: 'rgba(26, 20, 57, 0.68)', fontSize: { xs: '0.8rem', md: '0.9rem' }, textAlign: 'center' }}>
-                                    Please enter your password and keep it safe.
-                                </Typography>
-
-
-
-                                <Typography sx={{
-                                    color: '#635F78',
-                                    mt: 5,
-                                    fontSize: '0.9rem',
-                                    fontWeight: 500
-                                }}>
-                                    Password*
-                                </Typography>
-                                <Controller
-                                    name="password"
-                                    control={control}
-                                    render={({ field: { ref, ...field }, fieldState }) => (
-                                        <MasteryCustomInput
-                                            sx={{
-                                                mt: 2,
-                                                '& .MuiOutlinedInput-input': {
-                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                                }
-                                            }}
-                                            placeholder='Enter new password'
-                                            fullWidth
-                                            error={!!errors.password}
-                                            helperText={errors?.password?.message}
-                                            {...field}
-                                            inputRef={ref}
-                                        />
-                                    )}
-                                />
-
-                                <Typography sx={{
-                                    color: '#635F78',
-                                    mt: 2,
-                                    fontSize: '0.9rem',
-                                    fontWeight: 500
-                                }}>
-                                    Confirm Password*
-                                </Typography>
-
-                                <Controller
-                                    name="confirmPassword"
-                                    control={control}
-                                    render={({ field: { ref, ...field }, fieldState }) => (
-                                        <MasteryCustomInput
-                                            sx={{
-                                                mt: 2,
-                                                '& .MuiOutlinedInput-input': {
-                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                                }
-                                            }}
-                                            placeholder='Enter confirm password'
-                                            fullWidth
-                                            error={!!errors.confirmPassword}
-                                            helperText={errors?.confirmPassword?.message}
-                                            {...field}
-                                            inputRef={ref}
-                                        />
-                                    )}
-                                /> 
-
-                                <Button sx={{
-                                    mt: 7, backgroundColor: '#F66962', color: 'white', width: 1,
-                                    height: { xs: 40, md: 50 },
-                                    borderRadius: '10rem',
-                                    textTransform: 'none',
-                                    '&:hover': {
-                                        backgroundColor: '#F66962',
-                                    }
-                                }}
-                                    type='submit'
-                                >
-                                    Change Password
-                                </Button>
-
-
-                                <Typography sx={{
-                                    fontSize: '0.9rem',
-                                    mt: 3,
-                                    mb: 1,
-                                    textAlign: 'center',
-                                }}>
-                                    Take me to {' '}
-                                    <Link style={{
-                                        color: '#F66962',
-                                        textDecoration: 'none',
-                                        fontWeight: 500,
-                                    }}
-                                        to="/login"
-                                    >
-                                        Login
-                                    </Link>
-                                </Typography>
                             </Box>
-                        </Box>
+                        </Grid>
                     </Grid>
-                </Grid>
-            </Box>
-        </Container>
+                </Box>
+            </Container>
+        </>
     );
 };
 
