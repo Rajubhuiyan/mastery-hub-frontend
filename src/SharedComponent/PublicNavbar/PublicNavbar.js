@@ -210,7 +210,7 @@ const PublicNavbar = () => {
                             </svg>
 
                         </Typography>
-                        <Box sx={{ display: { xs: 'none', md: 'flex', justifyContent: 'center' }, flexGrow: 1, }}>
+                        <Box sx={{ display: { xs: 'none', md: 'flex', justifyContent: 'center' }, flexGrow: 1,ml:'60px' }}>
                             {navItems.map((item) => (
                                 <Button component={Link} to={item.path} key={item.id} sx={{ color: location.pathname === item.path ? '#FF6575' : '#685F78' }}>
                                     {t(item.name)}
