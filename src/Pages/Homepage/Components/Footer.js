@@ -129,7 +129,7 @@ const Footer = () => {
                                 <Stack spacing={2} mt={1}>
                                     {
                                         forInstructorData.map(data => (
-                                            <Link style={{ textDecoration: 'none',width:'fit-content' }} key={data.path} to={data.link}>
+                                            <Link style={{ textDecoration: 'none',width:'fit-content' }} key={data.id} to={data.link}>
                                                 <Typography sx={{ color: '#685F78', fontSize: '0.9rem' }}>
                                                     {data.name}
                                                 </Typography>
@@ -146,7 +146,7 @@ const Footer = () => {
                                 <Stack spacing={2} mt={1}>
                                     {
                                         forStudentData.map(data => (
-                                            <Link style={{ textDecoration: 'none',width:'fit-content' }} key={data.path} to={data.link}>
+                                            <Link style={{ textDecoration: 'none',width:'fit-content' }} key={data.id} to={data.link}>
                                                 <Typography sx={{ color: '#685F78', fontSize: '0.9rem' }}>
                                                     {data.name}
                                                 </Typography>

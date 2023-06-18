@@ -95,7 +95,7 @@ const LanguageSwitcher = () => {
             >
                 {
                     options.map((option) => (
-                        <MenuItem onClick={() => handleLanguageChange(option.code)}>
+                        <MenuItem key={option.code} onClick={() => handleLanguageChange(option.code)}>
                             <img
                                 style={{ marginRight: '10px' }}
                                 loading="lazy"
