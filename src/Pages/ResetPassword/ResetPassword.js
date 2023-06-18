@@ -1,45 +1,39 @@
-import { Box, Button,  Container,  Grid,  TextField, Typography, styled } from '@mui/material';
+import { Box, Button, Container, Grid, TextField, Typography, styled } from '@mui/material';
 import React from 'react';
 import graduateCapIcon from '../../Assets/Images/graduate-cap-icon.svg';
 import { Link, useParams } from 'react-router-dom';
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import MasteryCustomInput from '../../SharedComponent/CustomComponents/MasteryCustomInput';
 
-const Input = styled(TextField)({
-    '&': {
-        backgroundColor: 'white',
-        borderRadius: '0.4rem',
-        border: '1px solid #e3e3e3'
-    },
 
-    '& .MuiInputBase-input': {
-        fontSize: '0.9rem',
-    },
 
-    '& label.Mui-focused': {
-        color: '#A0AAB4',
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: '#B2BAC2',
-    },
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#E0E3E7',
-            display: 'none',
-        },
-        '&:hover fieldset': {
-            borderColor: '#B2BAC2',
-            display: 'none'
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: '#6F7E8C',
-            display: 'none'
-        },
-    },
+const schema = yup.object({
+    password: yup.string().required("Password is required").min(8, "Password is too short - should be 8 chars minimum."),
+    confirmPassword: yup.string().required("Confirm Password is required").oneOf([yup.ref('password'), null], 'Passwords must match')
+
 });
 
 const ResetPassword = () => {
 
 
     const { token } = useParams()
+
+
+    const defaultValues = {
+        password: "",
+        confirmPassword: ""
+    }
+
+    const { handleSubmit, formState: { errors }, control } = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onChange',
+        defaultValues
+    });
+    const handleChangePassword = (data) => {
+        console.log(data)
+    };
 
 
     return (
@@ -50,7 +44,10 @@ const ResetPassword = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 py: 5
-            }}>
+            }}
+                component="form"
+                onSubmit={handleSubmit(handleChangePassword)}
+            >
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={12}>
                         <Box sx={{
@@ -97,16 +94,27 @@ const ResetPassword = () => {
                                 }}>
                                     Password*
                                 </Typography>
-                                <Input
-                                    sx={{
-                                        mt: 2,
-                                        '& .MuiOutlinedInput-input': {
-                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                        }
-                                    }}
-                                    placeholder='Enter your email address'
-                                    fullWidth
+                                <Controller
+                                    name="password"
+                                    control={control}
+                                    render={({ field: { ref, ...field }, fieldState }) => (
+                                        <MasteryCustomInput
+                                            sx={{
+                                                mt: 2,
+                                                '& .MuiOutlinedInput-input': {
+                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                }
+                                            }}
+                                            placeholder='Enter new password'
+                                            fullWidth
+                                            error={!!errors.password}
+                                            helperText={errors?.password?.message}
+                                            {...field}
+                                            inputRef={ref}
+                                        />
+                                    )}
                                 />
+
                                 <Typography sx={{
                                     color: '#635F78',
                                     mt: 2,
@@ -115,20 +123,27 @@ const ResetPassword = () => {
                                 }}>
                                     Confirm Password*
                                 </Typography>
-                                <Input
-                                    sx={{
-                                        mt: 2,
-                                        '& .MuiOutlinedInput-input': {
-                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                        }
-                                    }}
-                                    placeholder='Enter your email address'
-                                    fullWidth
-                                />
 
-
-
-
+                                <Controller
+                                    name="confirmPassword"
+                                    control={control}
+                                    render={({ field: { ref, ...field }, fieldState }) => (
+                                        <MasteryCustomInput
+                                            sx={{
+                                                mt: 2,
+                                                '& .MuiOutlinedInput-input': {
+                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                }
+                                            }}
+                                            placeholder='Enter confirm password'
+                                            fullWidth
+                                            error={!!errors.confirmPassword}
+                                            helperText={errors?.confirmPassword?.message}
+                                            {...field}
+                                            inputRef={ref}
+                                        />
+                                    )}
+                                /> 
 
                                 <Button sx={{
                                     mt: 7, backgroundColor: '#F66962', color: 'white', width: 1,
@@ -138,7 +153,9 @@ const ResetPassword = () => {
                                     '&:hover': {
                                         backgroundColor: '#F66962',
                                     }
-                                }}>
+                                }}
+                                    type='submit'
+                                >
                                     Change Password
                                 </Button>
 

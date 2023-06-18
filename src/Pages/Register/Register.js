@@ -3,50 +3,53 @@ import React from 'react';
 import rightImage from '../../Assets/Images/Login/right-image.svg';
 import googleIcon from '../../Assets/Images/Login/google-icon.svg';
 import { Link } from 'react-router-dom';
+import MasteryCustomInput from '../../SharedComponent/CustomComponents/MasteryCustomInput';
+import { Controller, useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
 
-const Input = styled(TextField)({
-    '&': {
-        backgroundColor: 'white',
-        borderRadius: '0.4rem',
-        border: '1px solid #e3e3e3'
-    },
+const schema = yup.object({
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
+    email: yup.string().email("Enter a valid email").required("Email is required"),
+    password: yup.string().required("Password is required").min(8, "Password is too short - should be 8 chars minimum.")
 
-    '& .MuiInputBase-input': {
-        fontSize: '0.9rem',
-    },
-
-    '& label.Mui-focused': {
-        color: '#A0AAB4',
-    },
-    '& .MuiInput-underline:after': {
-        borderBottomColor: '#B2BAC2',
-    },
-    '& .MuiOutlinedInput-root': {
-        '& fieldset': {
-            borderColor: '#E0E3E7',
-            display: 'none',
-        },
-        '&:hover fieldset': {
-            borderColor: '#B2BAC2',
-            display: 'none'
-        },
-        '&.Mui-focused fieldset': {
-            borderColor: '#6F7E8C',
-            display: 'none'
-        },
-    },
 });
 
 const Register = () => {
+
+
+
+    const defaultValues = {
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: "",
+        rememberMe: false
+    }
+
+    const { handleSubmit, formState: { errors }, control } = useForm({
+        resolver: yupResolver(schema),
+        mode: 'onChange',
+        defaultValues
+    });
+    const handleRegister = (data) => {
+        console.log(data)
+    };
+
+
     return (
         <Container>
-            <Box sx={{ 
-                minHeight:'100vh',
-                display:'flex',
-                alignItems:'center',
-                justifyContent:'center', 
-                py:5
-            }}>
+            <Box sx={{
+                minHeight: '100vh',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                py: 5
+            }}
+                component="form"
+                onSubmit={handleSubmit(handleRegister)}
+            >
                 <Grid container spacing={5}>
                     <Grid item xs={12} md={6}>
                         <Box sx={{
@@ -64,7 +67,7 @@ const Register = () => {
                             <Box sx={{
                                 height: '100%',
                                 width: '100%',
-                                maxWidth: {xs:400,md:500},
+                                maxWidth: { xs: 400, md: 500 },
                                 px: { md: 5 }
                             }}>
                                 <Typography gutterBottom sx={{ color: '#1A1439', fontSize: { xs: '1.8rem', md: '2.5rem' }, fontWeight: 600, textAlign: 'center' }}>
@@ -94,16 +97,28 @@ const Register = () => {
                                 }}>
                                     First Name*
                                 </Typography>
-                                <Input
-                                    sx={{
-                                        mt: 1.5,
-                                        '& .MuiOutlinedInput-input': {
-                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                        }
-                                    }}
-                                    placeholder='Enter your first name'
-                                    fullWidth
+                                <Controller
+                                    name="firstName"
+                                    control={control}
+                                    render={({ field: { ref, ...field }, fieldState }) => (
+                                        <MasteryCustomInput
+                                            sx={{
+                                                mt: 1.5,
+                                                '& .MuiOutlinedInput-input': {
+                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                }
+                                            }}
+                                            placeholder='Enter your first name'
+                                            fullWidth
+                                            {...field}
+                                            inputRef={ref}
+                                            error={!!errors.firstName}
+                                            helperText={errors?.firstName?.message}
+                                        />
+                                    )}
                                 />
+
+
                                 <Typography sx={{
                                     color: '#635F78',
                                     mt: 2,
@@ -112,15 +127,25 @@ const Register = () => {
                                 }}>
                                     Last Name*
                                 </Typography>
-                                <Input
-                                    sx={{
-                                        mt: 1.5,
-                                        '& .MuiOutlinedInput-input': {
-                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                        }
-                                    }}
-                                    placeholder='Enter your last name'
-                                    fullWidth
+                                <Controller
+                                    name="lastName"
+                                    control={control}
+                                    render={({ field: { ref, ...field }, fieldState }) => (
+                                        <MasteryCustomInput
+                                            sx={{
+                                                mt: 1.5,
+                                                '& .MuiOutlinedInput-input': {
+                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                }
+                                            }}
+                                            placeholder='Enter your last name'
+                                            fullWidth
+                                            {...field}
+                                            inputRef={ref}
+                                            error={!!errors.lastName}
+                                            helperText={errors?.lastName?.message}
+                                        />
+                                    )}
                                 />
                                 <Typography sx={{
                                     color: '#635F78',
@@ -130,17 +155,27 @@ const Register = () => {
                                 }}>
                                     Email*
                                 </Typography>
-                                <Input
-                                    sx={{
-                                        mt: 1.5,
-                                        '& .MuiOutlinedInput-input': {
-                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                        }
-                                    }}
-                                    placeholder='Enter your email address'
-                                    fullWidth
-                                    type='email'
+                                <Controller
+                                    name="email"
+                                    control={control}
+                                    render={({ field: { ref, ...field }, fieldState }) => (
+                                        <MasteryCustomInput
+                                            sx={{
+                                                mt: 1.5,
+                                                '& .MuiOutlinedInput-input': {
+                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                }
+                                            }}
+                                            placeholder='Enter your email address'
+                                            fullWidth
+                                            {...field}
+                                            inputRef={ref}
+                                            error={!!errors.email}
+                                            helperText={errors?.email?.message}
+                                        />
+                                    )}
                                 />
+
                                 <Typography sx={{
                                     color: '#635F78',
                                     mt: 1.5,
@@ -149,32 +184,49 @@ const Register = () => {
                                 }}>
                                     Password
                                 </Typography>
-                                <Input
-                                    sx={{
-                                        mt: 1.5,
-                                        '& .MuiOutlinedInput-input': {
-                                            p: { xs: '11.5px 14px', md: '16.5px 14px' }
-                                        }
-                                    }} 
+                                <Controller
+                                    name="password"
+                                    control={control}
+                                    render={({ field: { ref, ...field }, fieldState }) => (
+                                        <MasteryCustomInput
+                                            sx={{
+                                                mt: 1.5,
+                                                '& .MuiOutlinedInput-input': {
+                                                    p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                }
+                                            }}
 
-                                    placeholder='Enter your password'
-                                    type='password'
-                                    fullWidth
+                                            placeholder='Enter your password'
+                                            type='password'
+                                            fullWidth
+                                            {...field}
+                                            inputRef={ref}
+                                            error={!!errors.password}
+                                            helperText={errors?.password?.message}
+                                        />
+                                    )}
                                 />
 
+
                                 <Stack sx={{ mt: 1.5 }} direction="row" alignItems="center" justifyContent="space-between">
-                                    <FormControlLabel sx={{
+                                    <Controller
+                                        name="rememberMe"
+                                        control={control}
+                                        render={({ field: { ref, ...field }, fieldState }) => (
+                                            <FormControlLabel sx={{
 
-                                        '& .MuiFormControlLabel-label': {
-                                            fontSize: '0.9rem',
-                                            fontWeight: 500,
-                                            color: '#6e6e6e',
-                                        },
-                                        '& .MuiSvgIcon-root': {
-                                            fontSize: '1.1rem'
-                                        }
+                                                '& .MuiFormControlLabel-label': {
+                                                    fontSize: '0.9rem',
+                                                    fontWeight: 500,
+                                                    color: '#6e6e6e',
+                                                },
+                                                '& .MuiSvgIcon-root': {
+                                                    fontSize: '1.1rem'
+                                                }
 
-                                    }} control={<Checkbox size='small' />} label="Remembered me" />
+                                            }} control={<Checkbox checked={field.value} onChange={field.onChange} size='small' />} label="Remembered me" />
+                                        )}
+                                    />
                                     <Link style={{ textDecoration: 'none' }} to="/forget-password">
                                         <Typography sx={{ color: '#F66962', fontSize: '0.9rem', fontWeight: 500 }}>
                                             Forgot Password?
@@ -190,7 +242,9 @@ const Register = () => {
                                     '&:hover': {
                                         backgroundColor: '#F66962',
                                     }
-                                }}>
+                                }}
+                                    type='submit'
+                                >
                                     Create Account
                                 </Button>
 
@@ -206,7 +260,7 @@ const Register = () => {
                                         textDecoration: 'none',
                                         fontWeight: 500,
                                     }}
-                                    to="/login"
+                                        to="/login"
                                     >
                                         Sign in
                                     </Link>
