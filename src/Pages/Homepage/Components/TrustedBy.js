@@ -94,7 +94,7 @@ const TrustedBy = () => {
                 >
                     {
                         trustedCompany.map((company, i) => (
-                            <SwiperSlide key={company.id}>
+                            <SwiperSlide key={i}>
                                 <Box>
                                     <img style={{
                                         height:'50px',

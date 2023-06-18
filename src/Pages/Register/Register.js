@@ -3,23 +3,27 @@ import React from 'react';
 import rightImage from '../../Assets/Images/Login/right-image.svg';
 import googleIcon from '../../Assets/Images/Login/google-icon.svg';
 import { Link } from 'react-router-dom';
+import MasteryCustomInput from '../../SharedComponent/CustomComponents/MasteryCustomInput';
 import { Controller, useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import MasteryCustomInput from '../../SharedComponent/CustomComponents/MasteryCustomInput';
 import PublicNavbar from '../../SharedComponent/PublicNavbar/PublicNavbar';
 
-
-
 const schema = yup.object({
+    firstName: yup.string().required("First name is required"),
+    lastName: yup.string().required("Last name is required"),
     email: yup.string().email("Enter a valid email").required("Email is required"),
     password: yup.string().required("Password is required").min(8, "Password is too short - should be 8 chars minimum.")
+
 });
 
-const Login = () => {
+const Register = () => {
+
 
 
     const defaultValues = {
+        firstName: "",
+        lastName: "",
         email: "",
         password: "",
         rememberMe: false
@@ -30,14 +34,13 @@ const Login = () => {
         mode: 'onChange',
         defaultValues
     });
-    const handleLogin = (data) => {
+    const handleRegister = (data) => {
         console.log(data)
     };
 
 
     return (
         <>
-
             <PublicNavbar />
             <Container>
                 <Box sx={{
@@ -48,7 +51,7 @@ const Login = () => {
                     pb: 2
                 }}
                     component="form"
-                    onSubmit={handleSubmit(handleLogin)}
+                    onSubmit={handleSubmit(handleRegister)}
                 >
                     <Grid container spacing={5}>
                         <Grid item xs={12} md={6}>
@@ -71,14 +74,14 @@ const Login = () => {
                                     px: { md: 5 }
                                 }}>
                                     <Typography gutterBottom sx={{ color: '#1A1439', fontSize: { xs: '1.8rem', md: '2.5rem' }, fontWeight: 600, textAlign: 'center' }}>
-                                        Welcome Back 👋
+                                        Join us today 👋
                                     </Typography>
                                     <Typography sx={{ color: 'rgba(26, 20, 57, 0.68)', fontSize: { xs: '0.8rem', md: '0.9rem' }, textAlign: 'center' }}>
-                                        Clarity gives you the blocks and components you need to create a truly professional website.
+                                         Create an account and explore more.
                                     </Typography>
                                     <Button sx={{
                                         mt: 3, backgroundColor: '#F0F0F0', color: 'black', width: 1,
-                                        height: { xs: 40, md: 50 },
+                                        height: { xs: 40, md: 45 },
                                         borderRadius: '10rem',
                                         textTransform: 'none',
                                         '&:hover': {
@@ -91,11 +94,69 @@ const Login = () => {
 
                                     <Typography sx={{
                                         color: '#635F78',
-                                        mt: 5,
+                                        mt: 4,
                                         fontSize: '0.9rem',
                                         fontWeight: 500
                                     }}>
-                                        Email Address*
+                                        First Name*
+                                    </Typography>
+                                    <Controller
+                                        name="firstName"
+                                        control={control}
+                                        render={({ field: { ref, ...field }, fieldState }) => (
+                                            <MasteryCustomInput
+                                                sx={{
+                                                    mt: 1.5,
+                                                    '& .MuiOutlinedInput-input': {
+                                                        p: { xs: '11.5px 14px', md: '14px 14px' }
+                                                    }
+                                                }}
+                                                placeholder='Enter your first name'
+                                                fullWidth
+                                                {...field}
+                                                inputRef={ref}
+                                                error={!!errors.firstName}
+                                                helperText={errors?.firstName?.message}
+                                            />
+                                        )}
+                                    />
+
+
+                                    <Typography sx={{
+                                        color: '#635F78',
+                                        mt: 2,
+                                        fontSize: '0.9rem',
+                                        fontWeight: 500
+                                    }}>
+                                        Last Name*
+                                    </Typography>
+                                    <Controller
+                                        name="lastName"
+                                        control={control}
+                                        render={({ field: { ref, ...field }, fieldState }) => (
+                                            <MasteryCustomInput
+                                                sx={{
+                                                    mt: 1.5,
+                                                    '& .MuiOutlinedInput-input': {
+                                                        p: { xs: '11.5px 14px', md: '14px 14px' }
+                                                    }
+                                                }}
+                                                placeholder='Enter your last name'
+                                                fullWidth
+                                                {...field}
+                                                inputRef={ref}
+                                                error={!!errors.lastName}
+                                                helperText={errors?.lastName?.message}
+                                            />
+                                        )}
+                                    />
+                                    <Typography sx={{
+                                        color: '#635F78',
+                                        mt: 1.5,
+                                        fontSize: '0.9rem',
+                                        fontWeight: 500
+                                    }}>
+                                        Email*
                                     </Typography>
                                     <Controller
                                         name="email"
@@ -103,9 +164,9 @@ const Login = () => {
                                         render={({ field: { ref, ...field }, fieldState }) => (
                                             <MasteryCustomInput
                                                 sx={{
-                                                    mt: 2,
+                                                    mt: 1.5,
                                                     '& .MuiOutlinedInput-input': {
-                                                        p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                        p: { xs: '11.5px 14px', md: '14px 14px' }
                                                     }
                                                 }}
                                                 placeholder='Enter your email address'
@@ -120,24 +181,24 @@ const Login = () => {
 
                                     <Typography sx={{
                                         color: '#635F78',
-                                        mt: 3,
+                                        mt: 1.5,
                                         fontSize: '0.9rem',
                                         fontWeight: 500
                                     }}>
-                                        Password*
+                                        Password
                                     </Typography>
-
                                     <Controller
                                         name="password"
                                         control={control}
                                         render={({ field: { ref, ...field }, fieldState }) => (
                                             <MasteryCustomInput
                                                 sx={{
-                                                    mt: 2,
+                                                    mt: 1.5,
                                                     '& .MuiOutlinedInput-input': {
-                                                        p: { xs: '11.5px 14px', md: '16.5px 14px' }
+                                                        p: { xs: '11.5px 14px', md: '14px 14px' }
                                                     }
                                                 }}
+
                                                 placeholder='Enter your password'
                                                 type='password'
                                                 fullWidth
@@ -150,8 +211,7 @@ const Login = () => {
                                     />
 
 
-                                    <Stack sx={{ mt: 2 }} direction="row" alignItems="center" justifyContent="space-between">
-
+                                    <Stack sx={{ mt: 1.5 }} direction="row" alignItems="center" justifyContent="space-between">
                                         <Controller
                                             name="rememberMe"
                                             control={control}
@@ -170,7 +230,6 @@ const Login = () => {
                                                 }} control={<Checkbox checked={field.value} onChange={field.onChange} size='small' />} label="Remembered me" />
                                             )}
                                         />
-
                                         <Link style={{ textDecoration: 'none' }} to="/forget-password">
                                             <Typography sx={{ color: '#F66962', fontSize: '0.9rem', fontWeight: 500 }}>
                                                 Forgot Password?
@@ -179,8 +238,8 @@ const Login = () => {
                                     </Stack>
 
                                     <Button sx={{
-                                        mt: 7, backgroundColor: '#F66962', color: 'white', width: 1,
-                                        height: { xs: 40, md: 50 },
+                                        mt: 3.5, backgroundColor: '#F66962', color: 'white', width: 1,
+                                        height: { xs: 40, md: 45 },
                                         borderRadius: '10rem',
                                         textTransform: 'none',
                                         '&:hover': {
@@ -189,24 +248,24 @@ const Login = () => {
                                     }}
                                         type='submit'
                                     >
-                                        Login
+                                        Create Account
                                     </Button>
 
 
                                     <Typography sx={{
                                         fontSize: '0.9rem',
-                                        mt: 3,
-                                        mb: 1
+                                        mt: 2.5,
+                                        mb: 0.7
                                     }}>
-                                        Don't have an account? {' '}
+                                        Already have an account? {' '}
                                         <Link style={{
                                             color: '#F66962',
                                             textDecoration: 'none',
                                             fontWeight: 500,
                                         }}
-                                            to="/register"
+                                            to="/login"
                                         >
-                                            Create free account
+                                            Sign in
                                         </Link>
                                     </Typography>
                                 </Box>
@@ -219,4 +278,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Register;

@@ -14,6 +14,7 @@ import JoinUs from './Components/JoinUs';
 import Footer from './Components/Footer';
 import LatestBlog from './Components/LatestBlog';
 import Review from './Components/Review';
+import PublicNavbar from '../../SharedComponent/PublicNavbar/PublicNavbar';
 
 const Homepage = () => {
     return (
@@ -28,7 +29,7 @@ const Homepage = () => {
                 backgroundPosition: 'center',
                 mb: { xs: '80px', md: '50px' }
             }}>
-                <Navbar />
+                <PublicNavbar />
                 <Header />
             </Box>
             <TopCategory />
