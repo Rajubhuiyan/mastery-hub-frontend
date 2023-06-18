@@ -1,5 +1,5 @@
 import { Container } from '@mui/material';
-import React from 'react';
+import React  from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -15,6 +15,8 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import LanguageSwitcher from '../LanguageSwitcher/LanguageSwitcher';
 
 
 const drawerWidth = 240;
@@ -33,27 +35,27 @@ const navItems = [
         child: [
         ]
     },
-    {
-        name: 'Instructors',
-        path: 'instructors',
-        id: 3,
-        child: [
-        ]
-    },
-    {
-        name: 'Students',
-        path: 'students',
-        id: 4,
-        child: [
-        ]
-    },
-    {
-        name: 'Pages',
-        path: 'pages',
-        id: 5,
-        child: [
-        ]
-    },
+    // {
+    //     name: 'Instructors',
+    //     path: 'instructors',
+    //     id: 3,
+    //     child: [
+    //     ]
+    // },
+    // {
+    //     name: 'Students',
+    //     path: 'students',
+    //     id: 4,
+    //     child: [
+    //     ]
+    // },
+    // {
+    //     name: 'Pages',
+    //     path: 'pages',
+    //     id: 5,
+    //     child: [
+    //     ]
+    // },
     {
         name: 'Blog',
         path: 'blog',
@@ -73,7 +75,8 @@ const navItems = [
 
 const PublicNavbar = () => {
 
-    const location = useLocation()
+    const location = useLocation();
+    const {t} = useTranslation()
 
     const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -109,7 +112,7 @@ const PublicNavbar = () => {
                 {navItems.map((item) => (
                     <ListItem key={item.id} disablePadding>
                         <ListItemButton onClick={handleDrawerToggle} component={Link} to={item.path} sx={{ color: location.pathname === item.path ? '#FF6575' : '#685F78', textAlign: 'center' }} >
-                            <ListItemText primary={item.name} />
+                            <ListItemText primary={t(item.name)} />
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -121,7 +124,7 @@ const PublicNavbar = () => {
             <Box sx={{ display: 'flex' }}>
                 <CssBaseline />
                 <AppBar component="nav" sx={{ position: 'static', backgroundColor: 'transparent', boxShadow: 'none' }} >
-                    <Toolbar>
+                    <Toolbar sx={{px:0}}>
                         <Box sx={{
                             display: { xs: 'flex', md: 'none' },
                             justifyContent: 'space-between',
@@ -133,49 +136,59 @@ const PublicNavbar = () => {
                                 aria-label="open drawer"
                                 edge="start"
                                 onClick={handleDrawerToggle}
-                                sx={{ mr: 2, display: { md: 'none' }, color: 'black' }}
+                                sx={{  display: { md: 'none' }, color: 'black',p:0.2 }}
+                                size='small'
                             >
-                                <MenuIcon />
+                                <MenuIcon fontSize="small" />
                             </IconButton>
                             <Box sx={{
                                 display: { xs: 'flex', },
                                 alignItems: 'center',
-                                gap: 1
+                                gap: 0.7
 
                             }}>
+                                <LanguageSwitcher/>
                                 <Button sx={{
                                      backgroundColor: 'white',
                                      color: location.pathname === '/login' ? '#FF6575' : '#685F78',
                                      borderRadius: '3rem',
                                      textTransform: 'none',
-                                     width: 90,
+                                     width: 80,
+                                     whiteSpace: 'nowrap',
                                      borderColor: location.pathname === '/login' ? '#FF6575' :  '#ebe6e6',
                                      '&:hover': {
                                          backgroundColor: '#392C7D',
                                          color: 'white'
-                                     }
+                                     },
+                                     fontSize:'0.7rem',
+                                     height:30
                                 }}
                                     component={Link}
                                     to="/login"
                                     variant='outlined'
+                                    size='small'
                                 >
-                                    Login
+                                    {t("Login")}
                                 </Button>
                                 <Button variant='outlined' sx={{
                                      color: location.pathname === '/register' ? '#FF6575' : '#4C2BEF',
                                      borderRadius: '3rem',
                                      textTransform: 'none',
-                                     width: 90,
+                                     width: 80,
+                                     whiteSpace: 'nowrap',
                                      borderColor: location.pathname === '/register' ? '#FF6575' : '#4C2BEF',
                                      '&:hover': {
                                          backgroundColor: '#392C7D',
                                          color: 'white'
-                                     }
+                                     },
+                                     fontSize:'0.7rem',
+                                     height:30
                                 }}
                                     component={Link}
                                     to="/register"
+                                    size='small'
                                 >
-                                    Register
+                                    {t("Register")}
                                 </Button>
                             </Box>
                         </Box>
@@ -200,7 +213,7 @@ const PublicNavbar = () => {
                         <Box sx={{ display: { xs: 'none', md: 'flex', justifyContent: 'center' }, flexGrow: 1, }}>
                             {navItems.map((item) => (
                                 <Button component={Link} to={item.path} key={item.id} sx={{ color: location.pathname === item.path ? '#FF6575' : '#685F78' }}>
-                                    {item.name}
+                                    {t(item.name)}
                                 </Button>
                             ))}
                         </Box>
@@ -210,12 +223,16 @@ const PublicNavbar = () => {
                             gap: 1
 
                         }}>
+                            <LanguageSwitcher/>
                             <Button sx={{
                                 backgroundColor: 'white',
                                 color: location.pathname === '/login' ? '#FF6575' : '#685F78',
                                 borderRadius: '3rem',
                                 textTransform: 'none',
-                                width: 90,
+                                width: 95,
+                                height:35,
+                                fontSize:'0.8125rem',
+                                whiteSpace: 'nowrap',
                                 borderColor: location.pathname === '/login' ? '#FF6575' :  '#ebe6e6',
                                 '&:hover': {
                                     backgroundColor: '#392C7D',
@@ -227,13 +244,16 @@ const PublicNavbar = () => {
                                 to="/login"
                                 variant='outlined'
                             >
-                                Login
+                                {t("Login")}
                             </Button>
                             <Button variant='outlined' sx={{
                                 color: location.pathname === '/register' ? '#FF6575' : '#4C2BEF',
                                 borderRadius: '3rem',
                                 textTransform: 'none',
-                                width: 90,
+                                width: 95,
+                                whiteSpace: 'nowrap',
+                                height:35,
+                                fontSize:'0.8125rem',
                                 borderColor: location.pathname === '/register' ? '#FF6575' : '#4C2BEF',
                                 '&:hover': {
                                     backgroundColor: '#392C7D',
@@ -241,9 +261,9 @@ const PublicNavbar = () => {
                                 }
                             }}
                                 component={Link}
-                                to="/register"
+                                to="/register" 
                             >
-                                Register
+                                {t("Register")}
                             </Button>
                         </Box>
                     </Toolbar>
