@@ -8,7 +8,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
 import MasteryCustomInput from '../../SharedComponent/CustomComponents/MasteryCustomInput';
 import PublicNavbar from '../../SharedComponent/PublicNavbar/PublicNavbar';
-
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { setLoggedUserData } from '../../Redux/LoggedUser/loggedUserReducer';
 
 
 const schema = yup.object({
@@ -17,6 +19,9 @@ const schema = yup.object({
 });
 
 const Login = () => {
+    const provider = new GoogleAuthProvider();
+    const auth = getAuth();
+
 
 
     const defaultValues = {
@@ -34,6 +39,50 @@ const Login = () => {
         console.log(data)
     };
 
+
+
+    const dispatch = useDispatch()
+
+
+
+    const handleGoogleLogin = () => {
+        signInWithPopup(auth, provider)
+            .then((result) => {
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                const credential = GoogleAuthProvider.credentialFromResult(result);
+                const token = credential.accessToken;
+                // The signed-in user info.
+                const user = result.user;
+                console.log({
+                    token, user
+                })
+
+                const userData = {
+                    name: user.displayName,
+                    email: user.email,
+                    photo: user.photoURL,
+                    uid: user.uid,
+                    accessToken: user.accessToken,
+                    role: 'ROLE_ADMIN'
+                }
+
+
+                sessionStorage.setItem('userInfo', JSON.stringify(userData))
+
+                dispatch(setLoggedUserData(userData))
+
+
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                // ...
+            });
+    }
 
     return (
         <>
@@ -84,7 +133,9 @@ const Login = () => {
                                         '&:hover': {
                                             backgroundColor: '#F0F0F0',
                                         }
-                                    }}>
+                                    }}
+                                        onClick={handleGoogleLogin}
+                                    >
                                         <img style={{ marginRight: '10px' }} src={googleIcon} alt="" /> Sign in with Google
                                     </Button>
 
