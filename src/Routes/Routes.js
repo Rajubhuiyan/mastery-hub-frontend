@@ -1,8 +1,13 @@
-import ForgetPassword from "../Pages/ForgetPassword/ForgetPassword";
-import Homepage from "../Pages/Homepage/Homepage";
-import Login from "../Pages/Login/Login";
-import Register from "../Pages/Register/Register";
-import ResetPassword from "../Pages/ResetPassword/ResetPassword";
+import { lazy } from 'react';
+import GuestAccess from '../SharedComponent/AuthControllers/GuestAccess';
+
+
+const ForgetPassword = lazy(() => import('../Pages/ForgetPassword/ForgetPassword'));
+const Homepage = lazy(() => import('../Pages/Homepage/Homepage'));
+const Login = lazy(() => import('../Pages/Login/Login'));
+const Register = lazy(() => import('../Pages/Register/Register'));
+const ResetPassword = lazy(() => import('../Pages/ResetPassword/ResetPassword'));
+
 
 
 export const routes = [
@@ -12,18 +17,34 @@ export const routes = [
     },
     {
         path: '/login',
-        element: <Login />,
+        element: (
+            <GuestAccess>
+                <Login />
+            </GuestAccess>
+        ),
     },
     {
         path: '/register',
-        element: <Register />,
+        element: (
+            <GuestAccess>
+                <Register />
+            </GuestAccess>
+        ),
     },
     {
         path: '/forget-password',
-        element: <ForgetPassword />,
+        element: (
+            <GuestAccess>
+                <ForgetPassword />
+            </GuestAccess>
+        ),
     },
     {
         path: '/reset-password/:token',
-        element: <ResetPassword />,
+        element: (
+            <GuestAccess>
+                <ResetPassword />
+            </GuestAccess>
+        ),
     },
 ];

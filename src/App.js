@@ -6,6 +6,8 @@ import 'swiper/css/pagination'; // swiper pagination style import
 import "swiper/css/free-mode";
 import { initializeApp } from 'firebase/app';
 import { useSelector } from 'react-redux';
+import { Suspense } from 'react';
+import SuspenseLoading from './SharedComponent/SuspenseLoader/SuspenseLoading';
 
 function App() {
 
@@ -22,15 +24,18 @@ function App() {
 
 
 
-  const loggedUser = useSelector(state => state.loggedUser.loggedUserData)
 
 
-  console.log(loggedUser,'loggedUser')
+ 
 
   return (
-    <RouterProvider router={router}>
+    <Suspense
+      fallback={<SuspenseLoading/>}
+    >
+      <RouterProvider router={router}>
 
-    </RouterProvider>
+      </RouterProvider>
+    </Suspense>
   );
 }
 

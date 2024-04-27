@@ -15,8 +15,10 @@ import Footer from './Components/Footer';
 import LatestBlog from './Components/LatestBlog';
 import Review from './Components/Review';
 import PublicNavbar from '../../SharedComponent/PublicNavbar/PublicNavbar';
+import useWindowScroll from '../../CustomHooks/useWindowScroll';
 
 const Homepage = () => {
+    useWindowScroll();
     return (
         <Box sx={{ maxWidth: '100vw', mb: 5 }}>
             <Box sx={{
@@ -49,9 +51,9 @@ const Homepage = () => {
             </Box>
 
             <TrustedBy />
-            <JoinUs/>
+            <JoinUs />
 
-            <Review/>
+            <Review />
 
             <Box sx={{
                 backgroundImage: `url(${trendingCourseBg})`,
@@ -60,11 +62,11 @@ const Homepage = () => {
                 width: '100%',
                 backgroundColor: 'white',
                 backgroundPosition: 'center',
-                py:4
+                py: 4
             }}>
-                <LatestBlog/>
+                <LatestBlog />
             </Box>
-            <Footer/>
+            <Footer />
 
         </Box>
     );
